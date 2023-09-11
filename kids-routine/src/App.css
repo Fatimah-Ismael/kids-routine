@@ -1,0 +1,83 @@
+.App {
+  text-align: center;
+}
+
+
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+body {
+  background-color: hwb(56 69% 8% / 0.977);
+  font-size: calc(10px + 2vmin);
+  color: white;
+  padding: 2%;
+  
+}
+
+h1{
+  padding-top: 1%;
+  padding-bottom: 1%;
+}
+
+.checklist{
+  width: 90%;
+  background-image: url("heart-1164739_640.jpg");
+  margin-left: auto;
+  margin-right: auto;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 15px;
+ 
+  
+}
+label {
+  width: 75%;
+  display: inline-block;
+  padding-bottom: 6%
+}
+
+input .hugs{
+  padding-bottom: 20px;
+}
+input .checkbox{
+  width:30px;
+  height: 15px;
+  background-color: antiquewhite;
+  display: inline-block;
+  
+}
+span {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #f9f505fd;
+  transition: 0.3s;
+  border-radius: 30px;
+}
+
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
