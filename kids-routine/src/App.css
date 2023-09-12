@@ -10,16 +10,7 @@
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
+
 body {
   background-color: hwb(56 69% 8% / 0.977);
   font-size: calc(10px + 2vmin);
@@ -28,11 +19,15 @@ body {
   
 }
 
+
 h1{
   padding-top: 1%;
   padding-bottom: 1%;
 }
-
+.image {
+  width: 15%;
+  height: 20%;
+}
 .checklist{
   width: 90%;
   background-image: url("heart-1164739_640.jpg");
@@ -41,6 +36,7 @@ h1{
   background-repeat: no-repeat;
   background-size: cover;
   padding: 15px;
+  
  
   
 }

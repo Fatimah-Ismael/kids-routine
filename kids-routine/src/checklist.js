@@ -2,8 +2,11 @@ import React, { useState, useEffect} from 'react';
 import tooth from './img/tooth.png';
 import potty from './img/potty.png';
 import books from './img/books.png';
-import hearts from './img/hearts.png'
-
+import hearts from './img/hearts.png';
+import pajamas from './img/pajamas.png';
+import shower from './img/shower.png';
+import dinner from './img/dinner.png';
+import clean from './img/clean-up.png';
 
 const initialValues= {
     dinner:'',
@@ -37,7 +40,9 @@ const onChange = event=>{
         <div>
             <form className='checklist'>
             <h1>Night Time Routine Checklist</h1>
-            <label> Dinner
+            <label>  
+                <img className='image' src={dinner} alt='dinner plate with food'/>
+                Dinner
                 <input
                     type='checkbox'
                     name='dinner'
@@ -45,14 +50,20 @@ const onChange = event=>{
                     onChange={onChange}
                     checked={form.dinner}
                     />
+                    
                 </label>
-            <label> Shower
+            <label> 
+            <img className='image' src={shower} alt='shower heard water coming out'/>
+                Shower
                 <input
                     type='checkbox'
                     name='shower'
                     />
                 </label>
-                <label> Pajamas
+
+                <label> 
+                <img className='image' src={pajamas} alt='top and bottom pajama set'/>
+                    Pajamas
                 <input
                 type='checkbox'
                 name='pajamas'
@@ -60,14 +71,17 @@ const onChange = event=>{
                 onChange={onChange}
                 />
                 </label>
-                <label> straighten up room/ pick up toys
+                <label> 
+                <img className='image' src={clean} alt='kids cleaning room'/>
+                    straighten up room/ pick up toys
                 <input
                     type='checkbox'
-                    name='straighten up'
+                    name='clean'
                     />
                 </label>
                 
             <label>
+                <img className='image' src={tooth} alt='tooth fairy'/>
                 Brush Teeth
                 <input className='checkbox'
                 type='checkbox'
@@ -77,30 +91,32 @@ const onChange = event=>{
                 onChange={onChange}
                 
                 />
-                <img src={tooth} alt='tooth fairy'/>
             </label>
             
-                <label>Potty
+                <label>
+                    <img className='image' src={potty} alt='toilet with face'/>
+                    Potty
                     <input
                     type='checkbox'
                     name='potty'
                     />
-                   <img src={potty} alt='toilet with face'/>
                 </label>
                
-                <label> Bedtime story
+                <label> 
+                    <img className='image'src={books} alt='books with glasses on top'/>
+                    Bedtime story
                 <input
                     type='checkbox'
                     name='story'
                     />
-                    <img src={books} alt='books with glasses on top'/>
                 </label>
-                <label> Hugs and Kisses goodnight
+                <label> 
+                    <img className='image' src={hearts} alt='three hearts'/>
+                    Hugs and Kisses goodnight
                 <input
                     type='checkbox'
                     name='hugs'
                     />
-                    <img src={hearts} alt='three hearts'/>
                 </label>
                 <br></br>
                 <button id='button'>Completed</button>
