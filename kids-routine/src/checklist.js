@@ -1,12 +1,14 @@
 import React, { useState, useEffect} from 'react';
-import tooth from './img/tooth.png';
 import potty from './img/potty.png';
 import books from './img/books.png';
 import hearts from './img/hearts.png';
 import pajamas from './img/pajamas.png';
 import shower from './img/shower.png';
 import dinner from './img/dinner.png';
-import clean from './img/clean-up.png';
+import tooth from './img/tooth.png';
+import cleanUp from './img/clean-up.png';
+import axios from 'axios';
+
 
 const initialValues= {
     dinner:'',
@@ -24,21 +26,31 @@ const Checklist= (props)=>{
     const { value, submit } = props
     const onSubmit= event=>{
         event.preventDefault()
-        const newForm={dinner: form.dinner, shower: form.shower, pajamas: form.pajamas, cleanUp: form.cleanUp,
-        brush: form.brush, potty: form.potty, story: form.story, hugs: form.hugs,
+        alert('it works')
+        axios.post(https://localhost)
+        const newForm={
+            dinner: form.dinner, 
+            shower: form.shower, 
+            pajamas: form.pajamas, 
+            cleanUp: form.cleanUp, 
+            brush: form.brush,
+            potty: form.potty, 
+            story: form.story, 
+            hugs: form.hugs,
     }
+   
 }
 const [form, setForm ]=useState(initialValues);   
-
+const [disabled, setDisabled] = useState(true);
 const onChange = event=>{ 
     const { checked, type, name} = event.target
     const valueInput = type === 'checkbox'? checked: value
-
+    console.log(form)
     setForm({...form, [name]:valueInput})
 }
     return (
         <div>
-            <form className='checklist'>
+            <form className='checklist' onSubmit={onSubmit}>
             <h1>Night Time Routine Checklist</h1>
             <label>  
                 <img className='image' src={dinner} alt='dinner plate with food'/>
@@ -58,6 +70,9 @@ const onChange = event=>{
                 <input
                     type='checkbox'
                     name='shower'
+                    value='shower'
+                    checked={form.shower}
+                    onChange={onChange}
                     />
                 </label>
 
@@ -72,11 +87,14 @@ const onChange = event=>{
                 />
                 </label>
                 <label> 
-                <img className='image' src={clean} alt='kids cleaning room'/>
+                <img className='image' src={cleanUp} alt='kids cleaning room'/>
                     straighten up room/ pick up toys
                 <input
                     type='checkbox'
-                    name='clean'
+                    name='cleanUp'
+                    value='cleanUp'
+                    checked={form.cleanUp}
+                    onChange={onChange}
                     />
                 </label>
                 
@@ -86,7 +104,7 @@ const onChange = event=>{
                 <input className='checkbox'
                 type='checkbox'
                 name='brush'
-                
+                value='brush'
                 checked={form.brush}
                 onChange={onChange}
                 
@@ -99,6 +117,9 @@ const onChange = event=>{
                     <input
                     type='checkbox'
                     name='potty'
+                    value='potty'
+                    checked={form.potty}
+                    onChange={onChange}
                     />
                 </label>
                
@@ -108,6 +129,9 @@ const onChange = event=>{
                 <input
                     type='checkbox'
                     name='story'
+                    value='story'
+                    checked={form.story}
+                    onChange={onChange}
                     />
                 </label>
                 <label> 
@@ -116,10 +140,13 @@ const onChange = event=>{
                 <input
                     type='checkbox'
                     name='hugs'
+                    value='hugs'
+                    onChange={onChange}
+                    checked={form.hugs}
                     />
                 </label>
                 <br></br>
-                <button id='button'>Completed</button>
+                <button id='button' disabled ={disabled}>Completed</button>
             </form>
 
         </div>
