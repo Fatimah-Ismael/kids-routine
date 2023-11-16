@@ -9,6 +9,9 @@ import tooth from './img/tooth.png';
 import cleanUp from './img/clean-up.png';
 import axios from 'axios';
 
+// figure out why check marks arent showing up
+// if all boxes checked then enable submit button
+// go to a congrats page when submitted
 
 const initialValues= {
     dinner:'',
@@ -21,14 +24,17 @@ const initialValues= {
     hugs: '',
 }
 
- const baseUrl='http://localhost:3000';
+ const baseUrl='https://reqres.in/api/';
 
 const Checklist= (props)=>{
     const { value, submit } = props
+    const [name, setName]=useState('');
+   
     const onSubmit= event=>{
         event.preventDefault()
-        //alert('it works')
-       const newForm={
+        console.log(`${name}, Yay all tasks completed`)
+     const newForm={
+            name: form.name,
             dinner: form.dinner, 
             shower: form.shower, 
             pajamas: form.pajamas, 
@@ -38,49 +44,42 @@ const Checklist= (props)=>{
             story: form.story, 
             hugs: form.hugs,
     }
-    axios.post(baseUrl).then((res)=>{
+    axios.post(baseUrl, {...form})
+    .then((res)=>{
         setForm(res.data)
-        //console.log(res.data)
+        console.log(res.data)
     })  
     .catch((err)=>{console.log(err.response)})
 
 
 }
-const [form, setForm ]=useState(initialValues);   
-const [disabled, setDisabled] = useState(true);
+const [form, setForm ]=useState('');   
+const [disabled, setDisabled] = useState(false);
 const onChange = event=>{ 
-    const { checked, type, name} = event.target
+    const name = event.target.name
+    const type = event.target.type
+    const checked = event.target.checked
     const valueInput = type === 'checkbox'? checked: value
-    console.log(form.value)
-    setForm({...form, [name]:valueInput})
-      /*  axios.get(baseUrl).then((res)=>{
-            setForm(res.data)
-            //console.log(res.data)
-        })  
-        .catch((err)=>{console.log(err.response)}) */
+    console.log(name)
+    setForm({...form,  valueInput})
     
 }
-/*
-useEffect(()=> {
-    schema.isValid(form).then(valid=>setDisabled(!valid))
-  }, [form])
-*/
+
     return (
         <div>
             <form className='checklist' onSubmit={onSubmit}>
             <h1>Night Time Routine Checklist</h1>
             <label >Name 
                <div style={{color: 'red'}}> 
-                  {/*<div>{errors.inputName}</div><div>{errors.specialText}</div>*/}
                </div>
                 <input 
                 id='name-input'
                 name='inputName'
                 type='text'
                 maxLength='50'
-                placeholder='name input'
+                placeholder='first name'
                 value={form.inputName}
-                onChange={onChange}
+                onChange={(event)=> setName(event.target.value)}
                 />
              </label>
              <div className='container'>
@@ -180,9 +179,8 @@ useEffect(()=> {
                 </label>
                 </div>
                 <br></br>
-                <button type='submit'>Completed</button>
+                <button onSubmit={submit} disabled={disabled} type='submit'>Completed</button>
             </form>
-
         </div>
     )
 }
